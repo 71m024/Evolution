@@ -14,10 +14,12 @@ public abstract class Element implements Followable {
 	protected Color borderColor;
 	protected double angle;
 	
-	public static final Color COLOR_DEFAULT = Color.black;
+	public static final Color COLOR_DEFAULT = Color.WHITE;
+	public static final Color BORDER_COLOR_DEFAULT = Color.BLACK;
 	
 	public Element() {
-		this.borderColor = COLOR_DEFAULT;
+		this.color = COLOR_DEFAULT;
+		this.borderColor = BORDER_COLOR_DEFAULT;
 	}
 	
 	public Element(Color borderColor) {

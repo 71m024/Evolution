@@ -1,5 +1,4 @@
 package ch.dorf10.view;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
 
@@ -8,17 +7,19 @@ import javax.swing.JComponent;
 import ch.dorf10.logic.Map;
 
 
-public class View extends JComponent{
+public class View extends JComponent {
 
 	private static final long serialVersionUID = 1L;
 	private Followable follow;
 	private Map map;
+	private boolean running;
+	public static final int REPAINT_BREAK_MS = 50;
 	
-	public View(Dimension dim, Followable follow, Map map) {
+	public View(Followable follow, Map map) {
 		super();
-		this.setSize(dim);
 		this.follow = follow;
 		this.map = map;
+		run();
 	}
 	
 	public double getAngle() {
@@ -29,8 +30,32 @@ public class View extends JComponent{
 		return follow.getCenterOfGravity();
 	}
 	
+	public void stop() {
+		running = false;
+	}
+
 	@Override
 	public void paintComponent(Graphics g) {
 		map.paint(g, this);
+	}
+
+	public void run() {
+		running = true;
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while (running) {
+					View.this.repaint();
+					try {
+						Thread.sleep(View.REPAINT_BREAK_MS);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		}).start();
 	}
 }

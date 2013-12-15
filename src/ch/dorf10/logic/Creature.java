@@ -9,6 +9,7 @@ public class Creature extends Form{
 		addPoint(new Point2D.Double(40, 0));
 		addPoint(new Point2D.Double(40, 60));
 		addPoint(new Point2D.Double(0, 60));
+		setColor(color);
 	}
 	
 	public void rotate(double angle) {

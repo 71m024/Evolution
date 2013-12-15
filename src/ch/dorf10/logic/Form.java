@@ -5,7 +5,6 @@ import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.BackingStoreException;
 
 import ch.dorf10.view.View;
 
@@ -58,13 +57,20 @@ public class Form extends Element {
 	
 	@Override
 	public void paint(Graphics g, View view) {
+		
 		Form viewForm = new Form(this);
+		
 		viewForm.rotate(-view.getAngle(), view.getCenter());
 		int xShift = (int) (view.getSize().getWidth() / 2 - view.getCenter().getX());
 		int yShift = (int) (view.getSize().getHeight() / 2 - view.getCenter().getY());
 		viewForm.move(xShift, yShift);
+		
+		Polygon p = viewForm.getPolygon();
+		
+		g.setColor(color);
+		g.fillPolygon(p);
 		g.setColor(borderColor);
-		g.drawPolygon(viewForm.getPolygon());
+		g.drawPolygon(p);
 	}
 	
 	@Override

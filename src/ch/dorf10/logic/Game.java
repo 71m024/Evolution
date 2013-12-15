@@ -1,5 +1,6 @@
 package ch.dorf10.logic;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -20,6 +21,7 @@ public class Game implements KeyListener{
 		Creature ramibu = new Creature();
 		Creature thunder = new Creature();
 		timo.setPosition(new Point2D.Double (200, 200));
+		timo.setColor(Color.MAGENTA);
 		tuxes.setPosition(new Point2D.Double(50, 50));
 		ramibu.setPosition(new Point2D.Double(300, 50));
 		thunder.setPosition(new Point2D.Double(200, 50));
@@ -28,8 +30,10 @@ public class Game implements KeyListener{
 		map.addCreature(tuxes);
 		map.addCreature(thunder);
 		map.addCreature(ramibu);
-		view = new View(new Dimension(800, 600), (Followable) timo, map);
-		new Window("GameWindow", this).setView(view);
+		view = new View((Followable) timo, map);
+		Window w = new Window("GameWindow", this);
+		w.setView(view);
+		w.setSize(new Dimension(800, 800));
 	}
 
 	@Override
@@ -47,7 +51,6 @@ public class Game implements KeyListener{
 		case 40:
 			timo.moveInDirection(5, 0f);
 		}
-		view.repaint();
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 public class Window extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	private Container cp;
 	
 	public Window(String name, KeyListener keyListener) {
