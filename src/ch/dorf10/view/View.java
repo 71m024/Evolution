@@ -9,7 +9,11 @@ import ch.dorf10.logic.Map;
 
 public class View extends JComponent {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * the serialVersionUID
+	 */
+	private static final long serialVersionUID = 2533867472740695022L;
+	
 	private Followable follow;
 	private Map map;
 	private boolean running;

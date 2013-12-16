@@ -13,16 +13,33 @@ public abstract class Element implements Followable {
 	protected Color color;
 	protected Color borderColor;
 	protected double angle;
+	protected Point2D.Double speed;
+	protected Point2D.Double acceleration;
+	protected Point2D.Double maxSpeed;
+	protected Point2D.Double minSpeed;
+	protected double lastDrawn;
 	
+	public static final double ANGLE_DEFAULT = 0;
 	public static final Color COLOR_DEFAULT = Color.WHITE;
 	public static final Color BORDER_COLOR_DEFAULT = Color.BLACK;
+	public static final Point2D.Double SPEED_DEFAULT = new Point2D.Double(0,0);
+	public static final Point2D.Double ACCELERATION_DEFAULT = new Point2D.Double(0,0);
+	public static final Point2D.Double SPPED_MIN_DEFAULT = new Point2D.Double(0,0);
+	public static final Point2D.Double SPEED_MAX_DEFAULT = new Point2D.Double(0,0);
 	
 	public Element() {
+		this.angle = ANGLE_DEFAULT;
 		this.color = COLOR_DEFAULT;
 		this.borderColor = BORDER_COLOR_DEFAULT;
+		this.speed = SPEED_DEFAULT;
+		this.acceleration = ACCELERATION_DEFAULT;
+		this.minSpeed = SPPED_MIN_DEFAULT;
+		this.maxSpeed = SPEED_MAX_DEFAULT;
+		this.lastDrawn = System.currentTimeMillis();
 	}
 	
 	public Element(Color borderColor) {
+		this();
 		this.borderColor = borderColor;
 	}
 	
@@ -60,6 +77,38 @@ public abstract class Element implements Followable {
 
 	public void setAngle(double angle) {
 		this.angle = angle;
+	}
+	
+	public Point2D.Double getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(Point2D.Double speed) {
+		this.speed = speed;
+	}
+
+	public Point2D.Double getAcceleration() {
+		return acceleration;
+	}
+
+	public void setAcceleration(Point2D.Double acceleration) {
+		this.acceleration = acceleration;
+	}
+
+	public Point2D.Double getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public void setMaxSpeed(Point2D.Double maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
+
+	public Point2D.Double getMinSpeed() {
+		return minSpeed;
+	}
+
+	public void setMinSpeed(Point2D.Double minSpeed) {
+		this.minSpeed = minSpeed;
 	}
 	
 	@Override
