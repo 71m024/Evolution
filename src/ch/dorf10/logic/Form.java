@@ -58,12 +58,14 @@ public class Form extends Element {
 	@Override
 	public void paint(Graphics g, View view) {
 		
+		updatePosition();
+		
 		Form viewForm = new Form(this);
 		
-		viewForm.rotate(-view.getAngle(), view.getCenter());
-		int xShift = (int) (view.getSize().getWidth() / 2 - view.getCenter().getX());
-		int yShift = (int) (view.getSize().getHeight() / 2 - view.getCenter().getY());
-		viewForm.move(xShift, yShift);
+		//int xShift = (int) (view.getSize().getWidth() / 2 - view.getCenter().getX());
+		//int yShift = (int) (view.getSize().getHeight() / 2 - view.getCenter().getY());
+		//viewForm.move(xShift, yShift);
+		//viewForm.rotate(-view.getAngle(), view.getCenter());
 		
 		Polygon p = viewForm.getPolygon();
 		

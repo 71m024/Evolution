@@ -45,21 +45,21 @@ public class View extends JComponent {
 
 	public void run() {
 		running = true;
-		
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				while (running) {
-					View.this.repaint();
-					try {
-						Thread.sleep(View.REPAINT_BREAK_MS);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			
-		}).start();
+
+//		new Thread(new Runnable() {
+//			
+//			@Override
+//			public void run() {
+//				while (running) {
+//					View.this.repaint();
+//					try {
+//						Thread.sleep(View.REPAINT_BREAK_MS);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			}
+//			
+//		}).start();
 	}
 }

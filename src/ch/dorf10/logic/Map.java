@@ -8,11 +8,7 @@ import ch.dorf10.view.View;
 
 public class Map {
 	
-	private Set<Creature> creatures;
-	
-	public Map() {
-		creatures = new HashSet<Creature>();
-	}
+	private Set<Creature> creatures = new HashSet<Creature>();
 	
 	public void addCreature(Creature c) {
 		creatures.add(c);

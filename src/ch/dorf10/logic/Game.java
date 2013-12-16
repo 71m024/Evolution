@@ -43,14 +43,16 @@ public class Game implements KeyListener{
 			timo.rotate(-5);
 			break;
 		case 38:
-			timo.moveInDirection(-5, 0f);
+			timo.moveInDirection(-5, 0);
+			//timo.setAcceleration(new Point2D.Double(0, -100));
 			break;
 		case 39:
 			timo.rotate(5);
 			break;
 		case 40:
-			timo.moveInDirection(5, 0f);
+			timo.setAcceleration(new Point2D.Double(0, 100));
 		}
+		view.repaint();
 	}
 
 	@Override
